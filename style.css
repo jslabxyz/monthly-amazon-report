@@ -1194,20 +1194,3 @@ select.form-control {
     break-inside: avoid;
   }
 }
-
-.export-pdf-btn {
-  background: var(--color-primary, #1FB8CD);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-md, 6px);
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-left: 24px;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.04));
-  transition: background 0.2s;
-}
-.export-pdf-btn:hover {
-  background: var(--color-primary-hover, #1599a8);
-}
