@@ -236,6 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initCharts();
     initTableSorting();
     addInteractiveFeatures();
+    const exportBtn = document.getElementById('export-pdf-btn');
+    if (exportBtn) {
+        exportBtn.addEventListener('click', exportFullReportPDF);
+    }
 });
 
 // Tab navigation
@@ -637,4 +641,74 @@ function exportData(format = 'json') {
 // Print functionality
 function printReport() {
     window.print();
+}
+
+// Export all tabs as a multi-page PDF
+function exportFullReportPDF() {
+    const tabIds = [
+        'overview',
+        'brands',
+        'products',
+        'ppc',
+        'traffic',
+        'revenue'
+    ];
+    const originalActive = document.querySelector('.tab-content.active');
+    const originalTab = document.querySelector('.nav-tab.active');
+    const pdfPages = [];
+    let promise = Promise.resolve();
+
+    tabIds.forEach((tabId, idx) => {
+        promise = promise.then(() => {
+            // Show this tab, hide others
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-tab').forEach(nt => nt.classList.remove('active'));
+            document.querySelector(`.nav-tab[data-tab="${tabId}"]`).classList.add('active');
+            // Wait for charts to render
+            return new Promise(resolve => setTimeout(resolve, 500));
+        }).then(() => {
+            // Clone the tab content for PDF
+            const tabContent = document.getElementById(tabId).cloneNode(true);
+            // Remove hidden class if any
+            tabContent.classList.add('active');
+            // Wrap in a container for consistent page size
+            const wrapper = document.createElement('div');
+            wrapper.style.minHeight = '1000px';
+            wrapper.style.padding = '32px';
+            wrapper.appendChild(tabContent);
+            pdfPages.push(wrapper);
+        });
+    });
+
+    promise.then(() => {
+        // Restore original tab
+        if (originalActive) originalActive.classList.add('active');
+        if (originalTab) originalTab.classList.add('active');
+        // Generate PDF
+        const opt = {
+            margin:       0,
+            filename:     'Amazon-Monthly-Report.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+        // Chain html2pdf for each page
+        let worker = html2pdf().set(opt).from(pdfPages[0]);
+        for (let i = 1; i < pdfPages.length; i++) {
+            worker = worker.toContainer().get('pdf').then(pdf => {
+                return html2pdf().set(opt).from(pdfPages[i]).toPdf().get('pdf').then(nextPdf => {
+                    const totalPages = nextPdf.internal.getNumberOfPages();
+                    for (let j = 1; j <= totalPages; j++) {
+                        pdf.addPage();
+                        pdf.setPage(pdf.internal.getNumberOfPages());
+                        pdf.addImage(nextPdf.getPage(j).data, 'JPEG', 0, 0);
+                    }
+                    return pdf;
+                });
+            });
+        }
+        worker.save();
+    });
 }

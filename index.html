@@ -6,6 +6,7 @@
     <title>Monthly Amazon Report Summary</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -32,6 +33,7 @@
                     <button class="nav-tab" data-tab="traffic">Traffic Analysis</button>
                     <button class="nav-tab" data-tab="revenue">Revenue Breakdown</button>
                 </div>
+                <button id="export-pdf-btn" class="export-pdf-btn">Export Full Report (PDF)</button>
             </div>
         </nav>
 
