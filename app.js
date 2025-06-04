@@ -325,11 +325,10 @@ function initTrafficChart() {
     const ctx = document.getElementById('trafficChart');
     if (!ctx) return;
 
+    // Only include Sessions and Page Views
     const trafficData = [
         { metric: 'Sessions', current: dashboardData.traffic_metrics.total_sessions.may_2025, previous: dashboardData.traffic_metrics.total_sessions.may_2024 },
-        { metric: 'Page Views', current: dashboardData.traffic_metrics.total_page_views.may_2025, previous: dashboardData.traffic_metrics.total_page_views.may_2024 },
-        { metric: 'Pages/Session', current: dashboardData.traffic_metrics.pages_per_session.may_2025, previous: dashboardData.traffic_metrics.pages_per_session.may_2024 },
-        { metric: 'Conversion Rate (%)', current: dashboardData.traffic_metrics.conversion_rate.may_2025, previous: dashboardData.traffic_metrics.conversion_rate.may_2024 }
+        { metric: 'Page Views', current: dashboardData.traffic_metrics.total_page_views.may_2025, previous: dashboardData.traffic_metrics.total_page_views.may_2024 }
     ];
     
     trafficChart = new Chart(ctx, {
@@ -363,11 +362,10 @@ function initTrafficChart() {
                 tooltip: {
                     callbacks: {
                         afterLabel: function(context) {
+                            // Only show change for Sessions and Page Views
                             const metrics = [
                                 { change: dashboardData.traffic_metrics.total_sessions.change },
-                                { change: dashboardData.traffic_metrics.total_page_views.change },
-                                { change: dashboardData.traffic_metrics.pages_per_session.change },
-                                { change: dashboardData.traffic_metrics.conversion_rate.change }
+                                { change: dashboardData.traffic_metrics.total_page_views.change }
                             ];
                             const change = metrics[context.dataIndex].change;
                             const changeText = change > 0 ? `+${change}%` : `${change}%`;
