@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Amazon Report Summary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1>Monthly Amazon Report Summary</h1>
+                        <p class="subtitle">May 1-31, 2025 | Comparison Period: May 1-31, 2024</p>
+                        <span class="report-info">Generated: June 2, 2025 | Prepared by: NSG Amazon Account Management</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="dashboard-nav">
+            <div class="container">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-tab="overview">Executive Overview</button>
+                    <button class="nav-tab" data-tab="brands">Brand Performance</button>
+                    <button class="nav-tab" data-tab="products">Top Products</button>
+                    <button class="nav-tab" data-tab="ppc">PPC Performance</button>
+                    <button class="nav-tab" data-tab="traffic">Traffic Analysis</button>
+                    <button class="nav-tab" data-tab="revenue">Revenue Breakdown</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="container">
+                <!-- Executive Overview Tab -->
+                <div id="overview" class="tab-content active">
+                    <div class="section-header">
+                        <h2>Executive Overview</h2>
+                        <p>Key performance indicators for May 1-31, 2025</p>
+                    </div>
+                    
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Gross Revenue</div>
+                            <div class="kpi-value">$132,313.88</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs $120,276.18</span>
+                                <span class="kpi-change positive">+10.0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Net Profit</div>
+                            <div class="kpi-value">$83,993.07</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs $89,251.50</span>
+                                <span class="kpi-change negative">-5.9%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Units Sold</div>
+                            <div class="kpi-value">4,059</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 3,653</span>
+                                <span class="kpi-change positive">+11.1%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Profit Margin</div>
+                            <div class="kpi-value">63.5%</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 74.2%</span>
+                                <span class="kpi-change negative">-14.4%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Active SKUs</div>
+                            <div class="kpi-value">39</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 32</span>
+                                <span class="kpi-change positive">+21.9%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Average Order Value</div>
+                            <div class="kpi-value">$32.60</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs $32.93</span>
+                                <span class="kpi-change negative">-1.0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="executive-summary card">
+                        <div class="card__body">
+                            <h3>Executive Summary</h3>
+                            <p>Portfolio delivered 10.0% growth reaching $132,313, driven by 11.1% increase in units sold across 39 active products. Net profit declined 5.9% to $83,993 due to margin compression from 74.2% to 63.5%, though unit volume and SKU expansion continue to drive top-line growth.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Performance Tab -->
+                <div id="brands" class="tab-content">
+                    <div class="section-header">
+                        <h2>Brand Performance</h2>
+                        <p>Revenue distribution and performance metrics by brand</p>
+                    </div>
+                    
+                    <div class="brand-overview">
+                        <div class="brand-chart-container">
+                            <div class="chart-container">
+                                <canvas id="brandRevenueChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="brand-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Revenue</th>
+                                        <th>Portfolio Share</th>
+                                        <th>YoY Growth</th>
+                                        <th>Performance Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Lunovus</strong></td>
+                                        <td>$78,572.82</td>
+                                        <td>59.4%</td>
+                                        <td class="positive">+11.3%</td>
+                                        <td><span class="status status--success">Strong</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MaxiVision</strong></td>
+                                        <td>$32,546.35</td>
+                                        <td>24.6%</td>
+                                        <td class="positive">+10.0%</td>
+                                        <td><span class="status status--info">Good</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Advanced Theraceuticals</strong></td>
+                                        <td>$21,194.71</td>
+                                        <td>16.0%</td>
+                                        <td class="positive">+5.7%</td>
+                                        <td><span class="status status--warning">Moderate</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="brand-financials-section">
+                        <h3>Brand Financial Metrics</h3>
+                        <div class="brand-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Revenue</th>
+                                        <th>Expenses</th>
+                                        <th>Net Profit</th>
+                                        <th>Margin %</th>
+                                        <th>YoY Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Lunovus</strong></td>
+                                        <td>$78,572.82</td>
+                                        <td>$28,827.38</td>
+                                        <td>$49,745.44</td>
+                                        <td>63.3%</td>
+                                        <td class="positive">+$7,954.12 (+11.3%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MaxiVision</strong></td>
+                                        <td>$32,546.35</td>
+                                        <td>$8,713.65</td>
+                                        <td>$23,832.70</td>
+                                        <td>73.2%</td>
+                                        <td class="positive">+$2,947.10 (+10.0%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Advanced</strong></td>
+                                        <td>$21,194.71</td>
+                                        <td>$10,779.78</td>
+                                        <td>$10,414.93</td>
+                                        <td>49.1%</td>
+                                        <td class="positive">+$1,136.48 (+5.7%)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Products Tab -->
+                <div id="products" class="tab-content">
+                    <div class="section-header">
+                        <h2>Top Products</h2>
+                        <p>Best performing products by revenue (Top 5)</p>
+                    </div>
+                    
+                    <div class="products-table-container">
+                        <table class="data-table sortable-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="rank">Rank</th>
+                                    <th data-sort="name">Product Name</th>
+                                    <th data-sort="brand">Brand</th>
+                                    <th data-sort="revenue">Revenue</th>
+                                    <th data-sort="units">Units</th>
+                                    <th data-sort="margin">Margin %</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-table-body">
+                                <tr>
+                                    <td>1</td>
+                                    <td>Premium Eyelid Wipes With Tea Tree</td>
+                                    <td>LUN</td>
+                                    <td>$53,307.47</td>
+                                    <td>2,324</td>
+                                    <td>56.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>MaxiVision AREDS 2 Whole Body</td>
+                                    <td>MAX</td>
+                                    <td>$10,476.60</td>
+                                    <td>228</td>
+                                    <td>72.4%</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Visual Advantage Macular Support</td>
+                                    <td>LUN</td>
+                                    <td>$7,545.45</td>
+                                    <td>151</td>
+                                    <td>92.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Pro-Optic Traditional Formula</td>
+                                    <td>ADV</td>
+                                    <td>$5,683.76</td>
+                                    <td>127</td>
+                                    <td>71.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Hydroptic Advanced Dry Eye</td>
+                                    <td>ADV</td>
+                                    <td>$4,853.84</td>
+                                    <td>216</td>
+                                    <td>29.1%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PPC Performance Tab -->
+                <div id="ppc" class="tab-content">
+                    <div class="section-header">
+                        <h2>PPC Performance</h2>
+                        <p>Pay-per-click advertising metrics and efficiency</p>
+                    </div>
+                    
+                    <div class="ppc-overview-cards">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Spend</div>
+                            <div class="kpi-value">$12,379.15</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Sales</div>
+                            <div class="kpi-value">$28,919.24</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Clicks</div>
+                            <div class="kpi-value">8,256</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Cost Per Click</div>
+                            <div class="kpi-value">$1.50</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Portfolio ACOS</div>
+                            <div class="kpi-value">42.8%</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Portfolio ROAS</div>
+                            <div class="kpi-value">2.34</div>
+                        </div>
+                    </div>
+
+                    <div class="ppc-brands-table">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Spend</th>
+                                    <th>Sales</th>
+                                    <th>ACOS</th>
+                                    <th>TACOS</th>
+                                    <th>ROAS</th>
+                                    <th>Performance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Lunovus</strong></td>
+                                    <td>$6,588.37</td>
+                                    <td>$18,555.35</td>
+                                    <td>35.5%</td>
+                                    <td>8.4%</td>
+                                    <td>2.82</td>
+                                    <td><span class="status status--info">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MaxiVision</strong></td>
+                                    <td>$1,255.19</td>
+                                    <td>$4,999.13</td>
+                                    <td>25.1%</td>
+                                    <td>3.9%</td>
+                                    <td>3.98</td>
+                                    <td><span class="status status--success">Excellent</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Advanced</strong></td>
+                                    <td>$4,535.59</td>
+                                    <td>$5,364.76</td>
+                                    <td>84.5%</td>
+                                    <td>21.4%</td>
+                                    <td>1.18</td>
+                                    <td><span class="status status--error">Needs Work</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Traffic Analysis Tab -->
+                <div id="traffic" class="tab-content">
+                    <div class="section-header">
+                        <h2>Traffic Analysis</h2>
+                        <p>Website traffic and operational performance metrics</p>
+                    </div>
+                    
+                    <div class="traffic-metrics">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Sessions</div>
+                            <div class="kpi-value">10,646</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 9,213</span>
+                                <span class="kpi-change positive">+15.6%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total Page Views</div>
+                            <div class="kpi-value">14,908</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 12,000</span>
+                                <span class="kpi-change positive">+24.2%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Pages per Session</div>
+                            <div class="kpi-value">1.40</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 1.30</span>
+                                <span class="kpi-change positive">+7.7%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-label">Conversion Rate</div>
+                            <div class="kpi-value">38.1%</div>
+                            <div class="kpi-comparison">
+                                <span class="kpi-previous">vs 39.7%</span>
+                                <span class="kpi-change negative">-1.6pp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="brand-traffic-section">
+                        <h3>Brand Traffic Performance</h3>
+                        <div class="brand-table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Sessions</th>
+                                        <th>Page Views</th>
+                                        <th>Pages per Session</th>
+                                        <th>Conversion Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Lunovus</strong></td>
+                                        <td>5,568</td>
+                                        <td>7,677</td>
+                                        <td>1.38</td>
+                                        <td>51.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MaxiVision</strong></td>
+                                        <td>3,161</td>
+                                        <td>4,469</td>
+                                        <td>1.41</td>
+                                        <td>18.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Advanced</strong></td>
+                                        <td>1,917</td>
+                                        <td>2,762</td>
+                                        <td>1.44</td>
+                                        <td>31.7%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="traffic-chart-container">
+                        <div class="chart-container">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Breakdown Tab -->
+                <div id="revenue" class="tab-content">
+                    <div class="section-header">
+                        <h2>Revenue Breakdown</h2>
+                        <p>Revenue source analysis and trends</p>
+                    </div>
+                    
+                    <div class="revenue-overview">
+                        <div class="revenue-chart-container">
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="revenue-details">
+                            <div class="revenue-item">
+                                <div class="revenue-source">
+                                    <h4>Organic Sales</h4>
+                                    <div class="revenue-amount">$103,394.64</div>
+                                    <div class="revenue-share">78.1% of total</div>
+                                    <div class="revenue-growth positive">+5.4% YoY</div>
+                                </div>
+                            </div>
+                            
+                            <div class="revenue-item">
+                                <div class="revenue-source">
+                                    <h4>PPC Sales</h4>
+                                    <div class="revenue-amount">$28,919.24</div>
+                                    <div class="revenue-share">21.9% of total</div>
+                                    <div class="revenue-growth positive">+3,437.6% YoY</div>
+                                </div>
+                            </div>
+
+                            <div class="revenue-item">
+                                <div class="revenue-source">
+                                    <h4>Total Revenue</h4>
+                                    <div class="revenue-amount">$132,313.88</div>
+                                    <div class="revenue-share">100% of total</div>
+                                    <div class="revenue-growth positive">+10.0% YoY</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
