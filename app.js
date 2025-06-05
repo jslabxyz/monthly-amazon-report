@@ -3,17 +3,19 @@ const dashboardData = {
   report_info: {
     title: "Monthly Amazon Report Summary",
     period: "May 1-31, 2025",
-    comparison_period: "May 1-31, 2024",
-    generated_date: "June 2, 2025",
+    comparison_period: "April 2025 & May 1-31, 2024",
+    generated_date: "June 5, 2025",
     prepared_by: "NSG Amazon Account Management"
   },
   
   key_metrics: {
     "Gross Revenue": {
-      may_2025: 132313.88,
+      may_2025: 131701.55,
+      apr_2025: 127287.78,
+      change: 4413.77,
+      percent_change: 3.5,
       may_2024: 120276.18,
-      change: 12037.70,
-      percent_change: 10.0
+      yoy_change: 9.5
     },
     "Net Profit": {
       may_2025: 83993.07,
@@ -22,10 +24,12 @@ const dashboardData = {
       percent_change: -5.9
     },
     "Units Sold": {
-      may_2025: 4059,
+      may_2025: 4051,
+      apr_2025: 3911,
+      change: 140,
+      percent_change: 3.6,
       may_2024: 3653,
-      change: 406,
-      percent_change: 11.1
+      yoy_change: 10.9
     },
     "Profit Margin": {
       may_2025: 63.5,
@@ -40,34 +44,39 @@ const dashboardData = {
       percent_change: 21.9
     },
     "Average Order Value": {
-      may_2025: 32.60,
+      may_2025: 32.51,
+      apr_2025: 32.55,
+      change: -0.04,
+      percent_change: -0.1,
       may_2024: 32.93,
-      change: -0.33,
-      percent_change: -1.0
+      yoy_change: -1.3
     }
   },
 
   brand_performance: [
     {
       brand: "Lunovus",
-      revenue: 78572.82,
-      share: 59.4,
+      revenue: 78359.56,
+      share: 59.5,
+      mom_growth: -0.3,
       yoy_growth: 11.3,
       rating: "Strong"
     },
     {
       brand: "MaxiVision", 
-      revenue: 32546.35,
-      share: 24.6,
+      revenue: 32179.47,
+      share: 24.4,
+      mom_growth: 3.0,
       yoy_growth: 10.0,
       rating: "Good"
     },
     {
       brand: "Advanced Theraceuticals",
-      revenue: 21194.71,
-      share: 16.0,
+      revenue: 21162.52,
+      share: 16.1,
+      mom_growth: 21.2,
       yoy_growth: 5.7,
-      rating: "Moderate"
+      rating: "Accelerating"
     }
   ],
 
@@ -116,11 +125,17 @@ const dashboardData = {
 
   ppc_portfolio: {
     total_spend: 12379.15,
+    apr_2025_spend: 9476.09,
     total_sales: 28919.24,
+    apr_2025_sales: 22294.83,
     total_clicks: 8256,
+    apr_2025_clicks: 3692,
     cost_per_click: 1.50,
+    apr_2025_cpc: 2.57,
     acos: 42.8,
-    roas: 2.34
+    apr_2025_acos: 42.5,
+    roas: 2.34,
+    apr_2025_roas: 2.35
   },
 
   brand_ppc: [
@@ -131,6 +146,7 @@ const dashboardData = {
       acos: 35.5,
       tacos: 8.4,
       roas: 2.82,
+      mom_sales_change: 12.1,
       performance: "Good"
     },
     {
@@ -140,15 +156,17 @@ const dashboardData = {
       acos: 25.1,
       tacos: 3.9,
       roas: 3.98,
+      mom_sales_change: 134.0,
       performance: "Excellent"
     },
     {
-      brand: "Advanced",
+      brand: "Advanced Theraceuticals",
       spend: 4535.59,
       sales: 5364.76,
       acos: 84.5,
       tacos: 21.4,
       roas: 1.18,
+      mom_sales_change: 48.9,
       performance: "Needs Work"
     }
   ],
@@ -156,23 +174,31 @@ const dashboardData = {
   traffic_metrics: {
     total_sessions: {
       may_2025: 10646,
+      apr_2025: 6359,
+      change: 67.4,
       may_2024: 9213,
-      change: 15.6
+      yoy_change: 15.6
     },
     total_page_views: {
       may_2025: 14908,
+      apr_2025: 8948,
+      change: 66.6,
       may_2024: 12000,
-      change: 24.2
+      yoy_change: 24.2
     },
     pages_per_session: {
       may_2025: 1.40,
+      apr_2025: 1.41,
+      change: -0.7,
       may_2024: 1.30,
-      change: 7.7
+      yoy_change: 7.7
     },
     conversion_rate: {
       may_2025: 38.1,
+      apr_2025: 61.5,
+      change: -23.4,
       may_2024: 39.7,
-      change: -1.6
+      yoy_change: -1.6
     }
   },
 
@@ -192,7 +218,7 @@ const dashboardData = {
       conversion_rate: 18.9
     },
     {
-      brand: "Advanced",
+      brand: "Advanced Theraceuticals",
       sessions: 1917,
       page_views: 2762,
       pages_per_session: 1.44,
@@ -203,21 +229,21 @@ const dashboardData = {
   revenue_breakdown: [
     {
       source: "Organic Sales",
-      amount: 103394.64,
-      percentage: 78.1,
+      amount: 102782.31,
+      percentage: 78.0,
       yoy_change: 5.4
     },
     {
       source: "PPC Sales",
       amount: 28919.24,
-      percentage: 21.9,
+      percentage: 22.0,
       yoy_change: 3437.6
     },
     {
       source: "Total Revenue",
-      amount: 132313.88,
+      amount: 131701.55,
       percentage: 100,
-      yoy_change: 10.0
+      yoy_change: 9.5
     }
   ]
 };
